@@ -134,15 +134,15 @@ function HomePage() {
     <div>
       {/* Hero Section */}
       {topics.length === 0 && !isLoading && (
-        <div className="text-center py-16">
-          <div className="inline-flex items-center gap-2 bg-pink-100 text-pink-600 px-4 py-2 rounded-full text-sm mb-6">
+        <div className="text-center py-8 sm:py-16 px-4">
+          <div className="inline-flex items-center gap-2 bg-pink-100 text-pink-600 px-4 py-2 rounded-full text-xs sm:text-sm mb-6">
             <span className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>
             Esosa's Podcast Assistant
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
             Find Your Next <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Podcast Topic</span>
           </h1>
-          <p className="text-gray-600 max-w-xl mx-auto mb-8">
+          <p className="text-gray-600 max-w-xl mx-auto mb-8 text-sm sm:text-base">
             Discover trending topics across Twitter, TikTok, Threads, and Reddit.
             Get curated ideas tailored for your podcast.
           </p>
@@ -150,7 +150,7 @@ function HomePage() {
           <button
             onClick={generateIdeas}
             disabled={isLoading}
-            className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg shadow-pink-500/30 hover:shadow-xl hover:shadow-pink-500/40 hover:-translate-y-0.5 transition-all disabled:opacity-50"
+            className="w-full sm:w-auto bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-full font-bold text-base sm:text-lg shadow-lg shadow-pink-500/30 hover:shadow-xl hover:shadow-pink-500/40 hover:-translate-y-0.5 transition-all disabled:opacity-50"
           >
             Generate Podcast Ideas
           </button>
@@ -159,18 +159,18 @@ function HomePage() {
 
       {/* Loading State */}
       {isLoading && (
-        <div className="text-center py-16">
+        <div className="text-center py-12 sm:py-16 px-4">
           <div className="inline-block mb-6">
-            <div className="w-16 h-16 border-4 border-pink-200 border-t-pink-500 rounded-full animate-spin"></div>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 border-4 border-pink-200 border-t-pink-500 rounded-full animate-spin"></div>
           </div>
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">Researching trends...</h2>
-          <p className="text-gray-500 mb-2">Scanning Twitter, TikTok, Threads & Reddit</p>
-          <p className="text-pink-500 text-sm font-medium">This may take 1-3 minutes. Feel free to leave and come back!</p>
-          <div className="flex justify-center gap-2 mt-4">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Researching trends...</h2>
+          <p className="text-gray-500 mb-2 text-sm">Scanning Twitter, TikTok, Threads & Reddit</p>
+          <p className="text-pink-500 text-xs sm:text-sm font-medium">This may take 1-3 minutes. Feel free to leave and come back!</p>
+          <div className="flex flex-wrap justify-center gap-2 mt-6">
             {['Twitter', 'TikTok', 'Threads', 'Reddit'].map((platform, i) => (
               <span
                 key={platform}
-                className="px-3 py-1 bg-white rounded-full text-sm text-gray-600 shadow-sm animate-pulse"
+                className="px-3 py-1 bg-white border border-pink-100 rounded-full text-xs text-gray-600 shadow-sm animate-pulse"
                 style={{ animationDelay: `${i * 0.2}s` }}
               >
                 {platform}
@@ -182,11 +182,11 @@ function HomePage() {
 
       {/* Error State */}
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
-          <p className="text-red-600 mb-4">{error}</p>
+        <div className="bg-red-50 border border-red-200 rounded-2xl p-6 text-center mx-4 sm:mx-0">
+          <p className="text-red-600 mb-4 text-sm font-medium">{error}</p>
           <button
             onClick={generateIdeas}
-            className="text-red-600 underline hover:no-underline"
+            className="bg-red-100 text-red-700 px-6 py-2 rounded-full text-sm font-bold hover:bg-red-200 transition-colors"
           >
             Try again
           </button>
@@ -195,21 +195,21 @@ function HomePage() {
 
       {/* Topics Grid */}
       {topics.length > 0 && (
-        <div>
-          <div className="flex items-center justify-between mb-6">
+        <div className="px-4 sm:px-0">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
             <div>
-              <h2 className="text-2xl font-bold text-gray-800">Podcast Ideas</h2>
-              <p className="text-gray-500">{topics.length} topics discovered</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Podcast Ideas</h2>
+              <p className="text-gray-500 text-sm">{topics.length} topics discovered</p>
             </div>
             <button
               onClick={generateIdeas}
               disabled={isLoading}
-              className="flex items-center gap-2 px-4 py-2 bg-pink-100 text-pink-600 rounded-full hover:bg-pink-200 transition-colors"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-pink-100 text-pink-600 rounded-full font-bold text-sm hover:bg-pink-200 transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
-              Refresh
+              Refresh Trends
             </button>
           </div>
 

@@ -9,73 +9,75 @@ function EpisodeModal({ topic, episodeData, isLoading, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+      <div className="bg-white rounded-t-[2.5rem] sm:rounded-2xl shadow-2xl w-full max-w-3xl h-[95vh] sm:max-h-[90vh] overflow-hidden flex flex-col animate-slide-up sm:animate-fade-in">
         {/* Header */}
-        <div className="bg-gradient-to-r from-pink-500 to-purple-500 p-6 text-white">
+        <div className="bg-gradient-to-r from-pink-500 to-purple-500 p-6 sm:p-7 text-white shadow-lg">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-pink-100 text-sm mb-1">Episode Draft</p>
-              <h2 className="text-xl font-bold">{topic.title}</h2>
+              <p className="text-pink-100 text-[10px] sm:text-sm font-bold uppercase tracking-widest mb-1">Episode Draft</p>
+              <h2 className="text-lg sm:text-2xl font-black leading-tight">{topic.title}</h2>
             </div>
             <button
               onClick={onClose}
-              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors active:scale-90 flex-shrink-0 ml-4"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-5 sm:p-8 bg-gray-50/30">
           {/* Loading State */}
           {isLoading && (
-            <div className="text-center py-12">
-              <div className="inline-block mb-4">
-                <div className="w-12 h-12 border-4 border-pink-200 border-t-pink-500 rounded-full animate-spin"></div>
+            <div className="text-center py-20 px-4">
+              <div className="inline-block mb-6">
+                <div className="w-16 h-16 border-4 border-pink-200 border-t-pink-500 rounded-full animate-spin"></div>
               </div>
-              <p className="text-gray-600">Generating episode content...</p>
-              <p className="text-pink-500 text-sm mt-2 font-medium">This may take 1-3 minutes. Feel free to leave and come back!</p>
+              <p className="text-lg font-bold text-gray-800">Drafting your episode...</p>
+              <p className="text-pink-500 text-sm mt-3 font-medium">Sit tight, this takes a moment ✨</p>
             </div>
           )}
 
           {/* Error State */}
           {episodeData?.error && (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
-              <p className="text-red-600">{episodeData.error}</p>
+            <div className="bg-red-50 border border-red-100 rounded-[2rem] p-8 text-center mx-4">
+              <div className="text-4xl mb-4">⚠️</div>
+              <p className="text-red-600 font-bold">{episodeData.error}</p>
             </div>
           )}
 
           {/* Episode Content */}
           {!isLoading && hasContent && (
-            <div className="space-y-6">
+            <div className="space-y-8 pb-32 sm:pb-8">
               {/* Episode Title & Description */}
-              <div className="bg-pink-50 rounded-xl p-5">
-                <h3 className="font-bold text-gray-800 text-lg mb-2">
+              <div className="bg-white rounded-[2rem] p-6 sm:p-8 border border-pink-100 shadow-sm">
+                <h3 className="font-black text-gray-800 text-xl sm:text-2xl mb-4 leading-tight">
                   {outline.title || episodeData.topic}
                 </h3>
                 {outline.description && (
-                  <p className="text-gray-600">{outline.description}</p>
+                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{outline.description}</p>
                 )}
               </div>
 
-              {/* Duration & Style */}
-              <div className="flex gap-4">
-                <div className="flex-1 bg-gray-50 rounded-xl p-4 text-center">
-                  <p className="text-gray-500 text-sm">Duration</p>
-                  <p className="font-bold text-gray-800">{episodeData.duration_minutes || 60} min</p>
-                </div>
-                <div className="flex-1 bg-gray-50 rounded-xl p-4 text-center">
-                  <p className="text-gray-500 text-sm">Style</p>
-                  <p className="font-bold text-gray-800 capitalize">{episodeData.host_style || 'Conversational'}</p>
-                </div>
-                <div className="flex-1 bg-gray-50 rounded-xl p-4 text-center">
-                  <p className="text-gray-500 text-sm">Audience</p>
-                  <p className="font-bold text-gray-800">{episodeData.target_audience || 'Gen Z'}</p>
-                </div>
+              {/* Stats Cards - Stack on Mobile */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  { label: 'Duration', value: `${episodeData.duration_minutes || 60} min`, icon: '⏱️' },
+                  { label: 'Style', value: episodeData.host_style || 'Conversational', icon: '🎙️' },
+                  { label: 'Audience', value: episodeData.target_audience || 'Gen Z', icon: '👥' }
+                ].map((stat, i) => (
+                  <div key={i} className="bg-white border border-pink-50 rounded-2xl p-4 flex sm:flex-col items-center sm:justify-center gap-4 sm:gap-1 text-left sm:text-center shadow-sm">
+                    <span className="text-2xl sm:mb-2">{stat.icon}</span>
+                    <div>
+                      <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest">{stat.label}</p>
+                      <p className="font-black text-gray-800 text-sm sm:text-base capitalize">{stat.value}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
 
               {/* Segments */}

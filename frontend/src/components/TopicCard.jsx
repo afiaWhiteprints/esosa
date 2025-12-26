@@ -24,29 +24,31 @@ function TopicCard({ topic, onDraftEpisode }) {
 
   return (
     <div className="bg-white rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-      <div className="p-6">
-        <div className="flex items-start justify-between gap-4">
+      <div className="p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
           <div className="flex-1">
             {/* Relevance Score Badge */}
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs px-2 py-1 bg-pink-100 text-pink-700 rounded-full">
+              <span className="text-[10px] sm:text-xs px-2 py-1 bg-pink-100 text-pink-700 rounded-full font-bold uppercase tracking-wider">
                 {relevanceScore}% relevant
               </span>
             </div>
 
             {/* Title */}
-            <h3 className="text-xl font-bold text-gray-800 mb-2">{topic.title}</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 leading-snug">{topic.title}</h3>
 
             {/* Description */}
             {topic.description && (
-              <p className="text-gray-600 text-sm leading-relaxed">{topic.description}</p>
+              <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 sm:line-clamp-none">
+                {topic.description}
+              </p>
             )}
           </div>
 
           {/* Draft Episode Button */}
           <button
             onClick={onDraftEpisode}
-            className="flex-shrink-0 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-5 py-2.5 rounded-full font-medium text-sm hover:shadow-lg hover:shadow-pink-500/30 transition-all hover:-translate-y-0.5"
+            className="w-full sm:w-auto flex-shrink-0 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-pink-500/30 transition-all active:scale-95"
           >
             Draft Episode
           </button>
@@ -56,7 +58,7 @@ function TopicCard({ topic, onDraftEpisode }) {
         {hasSources && (
           <button
             onClick={() => setExpanded(!expanded)}
-            className="mt-4 flex items-center gap-2 text-sm text-pink-600 hover:text-pink-700"
+            className="mt-4 flex items-center gap-2 text-sm font-bold text-pink-600 hover:text-pink-700 active:bg-pink-50 px-3 py-2 rounded-lg -ml-3 transition-colors"
           >
             <svg
               className={`w-4 h-4 transition-transform ${expanded ? 'rotate-180' : ''}`}
@@ -64,7 +66,7 @@ function TopicCard({ topic, onDraftEpisode }) {
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
             </svg>
             {expanded ? 'Hide sources' : 'View sources'}
           </button>

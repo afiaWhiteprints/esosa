@@ -101,37 +101,37 @@ function GuidePage() {
       </div>
 
       {/* Bento Grid Features */}
-      <div className="mb-16">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Features</h2>
-        <div className="grid grid-cols-3 gap-4">
+      <div className="mb-16 px-4 sm:px-0">
+        <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">Features</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`${feature.span} bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-100`}
+              className={`${feature.span} bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-100 shadow-sm`}
             >
-              <div className="text-3xl mb-3">{feature.icon}</div>
+              <div className="text-3xl mb-4">{feature.icon}</div>
               <h3 className="font-bold text-gray-800 mb-2">{feature.title}</h3>
-              <p className="text-gray-600 text-sm">{feature.description}</p>
+              <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Tips */}
-      <div className="bg-gradient-to-br from-pink-500 to-purple-500 rounded-2xl p-8 text-white">
-        <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-          <span>✨</span> Pro Tips
+      <div className="bg-gradient-to-br from-pink-500 to-purple-500 rounded-[2rem] p-6 sm:p-10 text-white mx-4 sm:mx-0 shadow-xl shadow-pink-500/20">
+        <h2 className="text-xl sm:text-2xl font-black mb-8 flex items-center gap-3">
+          <span className="bg-white/20 w-10 h-10 rounded-full flex items-center justify-center text-base">✨</span> Pro Tips
         </h2>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {tips.map((tip, index) => (
             <div
               key={index}
-              className="flex items-start gap-3 bg-white/10 rounded-xl p-4"
+              className="flex items-start gap-4 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10"
             >
-              <span className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center text-sm flex-shrink-0">
+              <span className="w-8 h-8 bg-white text-pink-500 rounded-full flex items-center justify-center text-sm font-black flex-shrink-0 shadow-lg">
                 {index + 1}
               </span>
-              <p className="text-sm text-pink-50">{tip}</p>
+              <p className="text-sm sm:text-base font-bold text-pink-50 leading-snug">{tip}</p>
             </div>
           ))}
         </div>
