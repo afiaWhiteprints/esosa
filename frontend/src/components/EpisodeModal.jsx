@@ -5,7 +5,7 @@ function EpisodeModal({ topic, episodeData, isLoading, onClose }) {
   const getPdfUrl = () => {
     if (!episodeData?.pdf_report) return null
     const filename = episodeData.pdf_report.split('/').pop().split('\\').pop()
-    return `http://localhost:8000/output/${filename}`
+    return `${import.meta.env.VITE_API_URL}/output/${filename}`
   }
 
   return (

@@ -2,6 +2,7 @@
 python-dotenv
 pyyaml
 requests
+pandas
 
 # AI/LLM
 google-genai

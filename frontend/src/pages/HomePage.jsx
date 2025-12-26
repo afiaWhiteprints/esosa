@@ -26,7 +26,7 @@ function HomePage() {
     setError(null)
     setTopics([])
 
-    fetch('http://localhost:8000/api/research', {
+    fetch(`${import.meta.env.VITE_API_URL}/api/research`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -102,7 +102,7 @@ function HomePage() {
     setEpisodeLoading(true)
     setEpisodeData(null)
 
-    fetch('http://localhost:8000/api/episode', {
+    fetch(`${import.meta.env.VITE_API_URL}/api/episode`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

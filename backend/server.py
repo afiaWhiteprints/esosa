@@ -20,11 +20,18 @@ logger = logging.getLogger("api")
 
 app = FastAPI(title="Podcast Assistant API", description="API for Esosa's Podcast Assistant")
 
+
+# Health check endpoint
+@app.get("/")
+async def health_check():
+    return {"status": "ok", "service": "Esosa Podcast Assistant API"}
+
+
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for development
-    allow_credentials=True,
+    allow_origins=["*"],  # Allow all origins
+    allow_credentials=False,  # Must be False when using "*" origins
     allow_methods=["*"],
     allow_headers=["*"],
 )

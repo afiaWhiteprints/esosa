@@ -5,6 +5,8 @@
 .env.*
 .env.local
 .env.*.local
+.env.development
+.env.production
 
 # Google Drive OAuth
 credentials.json
