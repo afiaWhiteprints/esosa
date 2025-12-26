@@ -22,4 +22,4 @@ uvicorn
 pydantic
 pydantic-settings
 python-multipart
-
+pandas
