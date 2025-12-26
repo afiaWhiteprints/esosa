@@ -1,0 +1,273 @@
+# AI Prompt Templates
+# Customize these to change the tone, style, and focus of AI-generated content
+
+system_message: "You are a helpful podcast assistant for Esosa."
+
+# Topic Analysis Prompts
+analyze_topics:
+  prompt: |
+    Analyze the following social media posts and extract potential podcast topic ideas that align with the podcast context.
+
+    PODCAST CONTEXT:
+    {context_section}
+
+    SOCIAL MEDIA POSTS TO ANALYZE:
+    {combined_text}
+
+    Based on the podcast context and these social media posts, provide:
+    1. Top 5-7 potential podcast episode topics that align with the podcast's focus
+    2. Brief explanation for each topic's relevance to the specific audience
+    3. Trending themes or patterns that match the podcast niche
+    4. Audience engagement indicators and what drives interest
+    5. How these topics connect to the target keywords (if provided)
+    6. Suggested angles or perspectives unique to the podcast's voice
+
+    Format your response as JSON with the following structure:
+    {{
+        "topics": [
+            {{
+                "title": "Topic Title",
+                "description": "Brief description",
+                "relevance_score": 1-10,
+                "niche_alignment": "How this aligns with podcast focus",
+                "key_points": ["point1", "point2", "point3"],
+                "unique_angle": "Suggested unique perspective for this podcast"
+            }}
+        ],
+        "trending_themes": ["theme1", "theme2"],
+        "audience_sentiment": "positive/negative/neutral",
+        "engagement_insights": "Brief analysis of what drives engagement",
+        "keyword_connections": "How trending topics connect to target keywords",
+        "content_opportunities": "Specific opportunities based on podcast context"
+    }}
+
+# Episode Outline Prompts
+generate_outline:
+  prompt: |
+    Create a detailed podcast episode outline for the following topic:
+
+    Topic: {topic}
+    Target Duration: {duration_minutes} minutes
+    {talking_points_text}
+
+    Please provide a comprehensive outline including:
+    1. Episode title (catchy and SEO-friendly)
+    2. Brief episode description
+    3. Detailed segment breakdown with time allocations
+    4. Key talking points for each segment
+    5. Potential questions to explore
+    6. Call-to-action ideas
+    7. SEO keywords for the episode
+
+    Format as JSON:
+    {{
+        "title": "Episode Title",
+        "description": "Episode description",
+        "duration_minutes": {duration_minutes},
+        "segments": [
+            {{
+                "name": "Segment Name",
+                "duration_minutes": 5,
+                "talking_points": ["point1", "point2"],
+                "questions": ["question1", "question2"]
+            }}
+        ],
+        "call_to_action": "CTA text",
+        "seo_keywords": ["keyword1", "keyword2"],
+        "prep_notes": "Additional preparation notes"
+    }}
+
+# Talking Points Prompts
+generate_talking_points:
+  prompt: |
+    Generate 8-10 specific talking points for a podcast discussion on: {topic}
+
+    Audience Level: {audience_level}
+    {perspective_text}
+
+    Make the talking points:
+    - Engaging and discussion-worthy
+    - Appropriate for the audience level
+    - Varied in depth and approach
+    - Include both factual and opinion-based points
+    - Actionable where possible
+
+    Return as a simple list, one point per line, starting with a dash.
+
+# Script Generation Prompts
+generate_script:
+  prompt: |
+    Create a complete podcast script for the following episode:
+
+    Topic: {topic}
+    Host Style: {host_style}
+    Target Audience: {target_audience}
+
+    Episode Outline:
+    {outline_json}
+
+    Generate a full script including:
+    1. Opening/Introduction (with hook)
+    2. Segment transitions
+    3. Detailed talking points with natural flow
+    4. Questions and discussion prompts
+    5. Sponsor break placements (if applicable)
+    6. Closing/Call-to-action
+    7. Timing cues for each section
+
+    Make the script sound natural and {host_style}. Include [PAUSE], [EMPHASIS], and [TRANSITION] cues.
+
+    Format as JSON:
+    {{
+        "episode_title": "Title",
+        "total_duration": "30 minutes",
+        "script_sections": [
+            {{
+                "section_name": "Opening",
+                "duration": "2 minutes",
+                "script": "Full script text with cues",
+                "notes": "Direction notes for host"
+            }}
+        ],
+        "production_notes": "Additional notes for editing"
+    }}
+
+# Intro/Outro Prompts
+generate_intro:
+  prompt: |
+    Create an engaging podcast intro for:
+
+    Podcast: {podcast_name}
+    Episode: {episode_title}
+    Host: {host_name}
+
+    Make it:
+    - Energetic and welcoming
+    - Include a hook that makes people want to listen
+    - 30-45 seconds when spoken
+    - Natural and conversational
+
+    Include [MUSIC FADE] and [PAUSE] cues where appropriate.
+
+generate_outro:
+  prompt: |
+    Create a compelling podcast outro for:
+
+    Podcast: {podcast_name}
+    Episode: {episode_title}
+    Host: {host_name}
+    {takeaways_text}
+
+    Include:
+    - Brief recap of key points
+    - Call to action (subscribe, rate, review)
+    - Teaser for next episode (if applicable)
+    - Thank you to listeners
+    - 45-60 seconds when spoken
+
+    Include [MUSIC FADE IN] cues.
+
+# Interview Prompts
+generate_interview_questions:
+  prompt: |
+    Create interview questions for a {interview_length}-minute podcast interview:
+
+    Guest: {guest_name}
+    Background: {guest_background}
+    Expertise: {guest_expertise}
+    Topic: {topic}
+
+    Generate 15-20 questions that:
+    - Flow naturally from general to specific
+    - Include warm-up questions
+    - Cover the guest's expertise and background
+    - Explore the main topic thoroughly
+    - Include follow-up question suggestions
+    - End with forward-looking questions
+
+    Categorize questions as:
+    - Warm-up (2-3 questions)
+    - Background/Journey (3-4 questions)
+    - Topic Deep-dive (8-10 questions)
+    - Personal/Future (2-3 questions)
+
+    Format as a list with question categories.
+
+# Show Notes Prompts
+generate_show_notes:
+  prompt: |
+    Create professional show notes based on this podcast script:
+
+    {sections_text}
+    {key_points_text}
+    {resources_text}
+
+    Generate show notes including:
+    1. Episode summary (2-3 sentences)
+    2. Key topics covered (bulleted list)
+    3. Timestamps for major sections
+    4. Key takeaways/quotes
+    5. Resources and links mentioned
+    6. Contact information for guest (if interview)
+    7. Call to action
+
+    Format for easy reading and sharing.
+
+# Social Media Prompts
+generate_social_media:
+  prompt: |
+    Create social media promotion content for this podcast episode:
+
+    Title: {title}
+    Key Points: {key_points}
+
+    Generate content for:
+    1. Twitter/X (3 different tweets, under 280 chars each)
+    2. LinkedIn (professional post, 1-2 paragraphs)
+    3. Instagram (engaging caption with hashtags)
+    4. Facebook (casual, conversation-starting post)
+
+    Make each platform's content appropriate for that audience.
+    Include relevant hashtags and call-to-actions.
+
+# Segment Script Prompts
+generate_segment_script:
+  prompt: |
+    Create a detailed script for this podcast segment:
+
+    Segment: {segment_name}
+    Duration: {duration_minutes} minutes
+    Talking Points: {talking_points}
+    Questions: {questions}
+    Host Style: {host_style}
+
+    Generate natural, flowing dialogue that covers all talking points.
+    Include timing cues, emphasis marks, and transition phrases.
+    Make it sound {host_style} and engaging.
+
+    Provide the script as natural speaking text with [CUE] markers for:
+    - [PAUSE] for natural breaks
+    - [EMPHASIS] for important points
+    - [TRANSITION] for moving between topics
+
+# Custom Synthesis
+custom_synthesis:
+  prompt: |
+    {custom_prompt}
+
+    Based on these social media posts:
+    {combined_text}
+
+# Chat Assistant Prompt
+chat_assistant:
+  prompt: |
+    You are Esosa's Podcast Assistant. Your goal is to help with podcast-related tasks, research, and content creation.
+    
+    GUIDELINES:
+    1. Stay strictly on the topic of podcasts, content creation, social media trends, and audience engagement.
+    2. If the user asks something unrelated to podcasts, politely redirect them.
+    3. Provide concise, actionable advice.
+    4. If the user's request is vague, ask for clarification (e.g., niche, keywords, target audience).
+    5. You do not have the ability to execute code or search the web directly in this chat mode, but you can help plan these actions.
+
+    User Request: {user_input}

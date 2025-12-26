@@ -1,0 +1,161 @@
+# Podcast Assistant Configuration File
+# Edit this file to customize your podcast research and content generation settings
+
+# === RESEARCH SETTINGS ===
+research:
+  # Keywords to search for (comma-separated)
+  keywords: "Gen Z culture, authentic conversations, self-awareness, faith journey, real-life struggles, mental health, unfiltered discussions, cultural commentary, young adult faith, honest storytelling, life chaos, vulnerability, millenial mindset, spiritual growth, personal development, raw conversations, authentic living, societal trends, youth culture, emotional well-being, therapy but unfiltered, real talk, humor and healing, gen z struggles, modern struggles, toxic culture, hustle culture, social media pressure, digital addiction, overthinking, self growth but messy, mental health but make it funny, relatable as fuck, hot takes, pop culture therapy, woke vs awake, relationship drama, gen z lifestyle, life in 4k, healing era, chaos & clarity, safe space but shady, therapy you didn't ask for, laughing through the pain, gen z hot seat, deep talks and dumb jokes, unfiltered truth, everyday therapy, modern relationships, vulnerable but funny"
+
+  # Your podcast niche/domain
+  niche: "Gen Z Culture and Authenticity"
+
+  # Detailed description of your podcast for better topic alignment
+  description: "Gen Z centered video podcast that cuts through the noise-raw conversations around culture, self-awareness, faith, and real-life chaos. No filters, just honest takes."
+
+  # Maximum number of tweets to analyze per research session
+  max_tweets: 5
+
+  # Date range settings (how far back to search)
+  days_back: 7  # Number of days to look back for content
+
+  # Keyword selection settings
+  use_random_keywords: true  # If true, randomly select keywords each session
+  random_keyword_count: 10   # Number of keywords to randomly select
+
+  # Generate PDF report (true/false)
+  generate_pdf: true
+
+  # Twitter/X integration settings
+  twitter:
+    # Whether to include Twitter in multi-platform research
+    enabled: true
+
+    # Maximum number of tweets to analyze
+    max_tweets: 5
+
+    # Date range (days back to search)
+    days_back: 7
+
+    # Random keyword selection for Twitter
+    use_random_keywords: true
+    random_keyword_count: 10
+
+  # TikTok integration settings
+  tiktok:
+    # Whether to include TikTok in multi-platform research
+    enabled: true
+
+    # Maximum number of TikTok videos to analyze
+    max_videos: 5
+
+    # Regions to search in (2-letter country codes: us, ng, uk, ca, etc.)
+    regions: ["us", "ng"]
+
+    # Date range (days back to search)
+    days_back: 7
+
+    # Random keyword selection for TikTok (independent from Twitter)
+    use_random_keywords: true  # If true, randomly select keywords for TikTok
+    random_keyword_count: 10    # Number of keywords to randomly select for TikTok
+
+  # Threads integration settings
+  threads:
+    # Whether to include Threads in multi-platform research
+    enabled: true
+
+    # Maximum number of Threads posts to analyze
+    max_posts: 5
+
+    # Date range (days back to search)
+    days_back: 7
+
+    # Random keyword selection for Threads (independent from other platforms)
+    use_random_keywords: true  # If true, randomly select keywords for Threads
+    random_keyword_count: 10    # Number of keywords to randomly select for Threads
+
+  # Reddit integration settings
+  reddit:
+    # Whether to include Reddit in multi-platform research
+    enabled: true
+
+    # Maximum number of Reddit posts to analyze
+    max_posts: 5
+
+    # Date range (days back to search)
+    days_back: 7
+
+    # Random keyword selection for Reddit (independent from other platforms)
+    use_random_keywords: true  # If true, randomly select keywords for Reddit
+    random_keyword_count: 10    # Number of keywords to randomly select for Reddit
+
+# === EPISODE GENERATION SETTINGS ===
+episode:
+  # Main episode topic (leave empty to auto-generate from research data)
+  topic: ""
+  
+  # Specific talking points (leave empty for AI to generate)
+  talking_points: []
+  # Example: ["Mental health stigma", "Social media pressure", "Faith in modern culture"]
+  
+  # Episode duration in minutes
+  duration_minutes: 60
+  
+  # Host style (conversational, professional, casual, educational)
+  host_style: "conversational"
+  
+  # Target audience
+  target_audience: "Gen Z"
+  
+  # Generate PDF report (true/false)
+  generate_pdf: true
+
+# === INTERVIEW PREPARATION SETTINGS (Optional - only needed for interview mode) ===
+# interview:
+#   # Guest information
+#   guest:
+#     name: "Guest Name"
+#     expertise: "Guest Expertise Area"
+#     background: "Guest Background"
+#     twitter_handle: ""  # Optional: guest's Twitter handle (without @)
+#   
+#   # Interview topic
+#   topic: "Interview Topic"
+#   
+#   # Interview duration in minutes
+#   duration_minutes: 45
+#   
+#   # Generate PDF report (true/false)
+#   generate_pdf: true
+
+# === COMPETITIVE ANALYSIS SETTINGS (Optional - only needed for competition mode) ===
+# competition:
+#   # Competitor-related keywords
+#   keywords: "competitor1,competitor2,industry-terms"
+#   
+#   # Generate PDF report (true/false)
+#   generate_pdf: true
+
+# === OUTPUT SETTINGS ===
+output:
+  # Output directory for all generated files
+  directory: "output"
+  
+  # Output format preferences
+  format: "pdf"  # Options: pdf, json, both
+  
+  # Include timestamps in filenames (true/false)
+  include_timestamps: true
+
+# === GENERAL SETTINGS ===
+general:
+  # Operation mode (research, episode, interview, competition, research_to_episode)
+  mode: "research_to_episode"
+  
+  # Podcast information (used across all operations)
+  podcast:
+    name: "Filtered Therapy"
+    host_name: "Esosa Mitchell"
+    website: "https://open.spotify.com/show/5pPPICiOEUsuK8Aq9bmdqQ?si=29e20eb9f03e4ba3"
+    
+  # Verbosity level for console output (summary, full, minimal)
+  verbosity: "summary"

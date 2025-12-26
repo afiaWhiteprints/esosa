@@ -1,0 +1,75 @@
+twitter:
+  requests_monthly: 1000
+  rate_limit: 1000
+  client: "Requests"
+  base_url: "https://twitter241.p.rapidapi.com/search-v2"
+  endpoints:
+    search: "/search-v2"
+    trends: "/trends"
+  headers:
+    x-rapidapi-key: "${RAPIDAPI_KEY}"
+    x-rapidapi-host: "twitter241.p.rapidapi.com"
+  querystring:
+    type: "Top"
+    count: "100"
+  session:
+    max_requests: 25
+    delay_seconds: 1
+
+tiktok:
+  requests_monthly: 1000
+  rate_limit: 500
+  client: "Requests"
+  base_url: "https://tiktok-scraper7.p.rapidapi.com"
+  endpoints:
+    search: "/search/keyword"
+  headers:
+    x-rapidapi-key: "${RAPIDAPI_KEY}"
+    x-rapidapi-host: "tiktok-scraper7.p.rapidapi.com"
+  querystring:
+    region: "us"
+  session:
+    max_requests: 20
+    delay_seconds: 1
+
+threads:
+  requests_monthly: 1000
+  rate_limit: 500
+  client: "Requests"
+  base_url: "https://threads-api4.p.rapidapi.com"
+  endpoints:
+    search: "/search"
+  headers:
+    x-rapidapi-key: "${RAPIDAPI_KEY}"
+    x-rapidapi-host: "threads-api4.p.rapidapi.com"
+  session:
+    max_requests: 20
+    delay_seconds: 1
+
+reddit:
+  requests_monthly: 1000
+  rate_limit: 500
+  client: "Requests"
+  base_url: "https://reddit-scraper2.p.rapidapi.com"
+  endpoints:
+    search: "/search_posts"
+  headers:
+    x-rapidapi-key: "${RAPIDAPI_KEY}"
+    x-rapidapi-host: "reddit-scraper2.p.rapidapi.com"
+  session:
+    max_requests: 20
+    delay_seconds: 1
+
+gemini:
+  client: "GoogleGenerativeAI"
+  api_key: "${GEMINI_API_KEY}"
+  model: "gemini-2.0-flash"
+  temperature: 0.7
+  max_output_tokens: 8192
+
+openrouter:
+  client: "Requests"
+  api_key: "${OPENROUTER_API_KEY}"
+  model: "tngtech/deepseek-r1t-chimera:free"
+  base_url: "https://api.openrouter.ai/v1/chat/completions"
+  temperature: 0.7

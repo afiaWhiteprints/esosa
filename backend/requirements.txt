@@ -1,0 +1,25 @@
+# Core dependencies
+python-dotenv
+pyyaml
+requests
+
+# AI/LLM
+google-genai
+
+# PDF generation
+reportlab
+
+# Optional: Google Drive sync
+# Uncomment if using Google Drive auto-backup
+# google-auth
+# google-auth-oauthlib
+# google-auth-httplib2
+# google-api-python-client
+
+# API
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+python-multipart
+
