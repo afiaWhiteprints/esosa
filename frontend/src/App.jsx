@@ -1,12 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import HomePage from './pages/HomePage'
 import GuidePage from './pages/GuidePage'
 import SettingsPage from './pages/SettingsPage'
 import ChatModal from './components/ChatModal'
+import LoginModal from './components/LoginModal'
 
 function App() {
   const [activeTab, setActiveTab] = useState('home')
   const [chatOpen, setChatOpen] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem('esosa_authenticated') === 'true'
+  })
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      localStorage.setItem('esosa_authenticated', 'true')
+    }
+  }, [isAuthenticated])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-pink-50 to-purple-100 pb-20 sm:pb-0">
@@ -29,8 +39,8 @@ function App() {
                     key={tab}
                     onClick={() => setActiveTab(tab)}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeTab === tab
-                        ? 'bg-white text-pink-600 shadow-sm'
-                        : 'text-gray-600 hover:text-pink-600'
+                      ? 'bg-white text-pink-600 shadow-sm'
+                      : 'text-gray-600 hover:text-pink-600'
                       }`}
                   >
                     {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -75,8 +85,8 @@ function App() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 py-3 rounded-full flex flex-col items-center gap-1 transition-all ${activeTab === tab.id
-                  ? 'bg-pink-500 text-white shadow-lg'
-                  : 'text-gray-500 hover:text-pink-500'
+                ? 'bg-pink-500 text-white shadow-lg'
+                : 'text-gray-500 hover:text-pink-500'
                 }`}
             >
               <span className="text-xl">{tab.icon}</span>
@@ -101,6 +111,11 @@ function App() {
 
       {/* Chat Modal */}
       {chatOpen && <ChatModal onClose={() => setChatOpen(false)} />}
+
+      {/* Login Guard */}
+      {!isAuthenticated && (
+        <LoginModal onLogin={() => setIsAuthenticated(true)} />
+      )}
     </div>
   )
 }

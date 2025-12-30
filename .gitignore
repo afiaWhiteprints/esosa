@@ -24,6 +24,9 @@ backups/
 
 # Markdown files
 *.md
+!qa/sdlc.md
+!qa/stlc.md
+qa/
 
 # Backend examples
 backend/examples/

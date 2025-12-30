@@ -19,7 +19,7 @@
   --color-secondary-600: #7c3aed;
   --color-secondary-700: #6d28d9;
 
-  --font-sans: "Inter", "sans-serif";
+  --font-sans: "Outfit", "Inter", sans-serif;
 }
 
 @layer base {
